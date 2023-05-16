@@ -279,19 +279,12 @@ const ListItem = styled.li`
   min-width: fit-content;
   a {
     border-radius: 5px;
-    padding: 10px;
+    padding: 5px 10px;
     width: 100%;
     transition: background-color 120ms ease-out;
     &:hover,
     &:focus-visible {
-      background-color: #ebebeb;
-    }
-    @media (min-width: 1100px) {
-      padding: 0 10px;
-      &:hover,
-      &:focus-visible {
-        background-color: unset;
-      }
+      background-color: rgb(126 126 126 / 16%);
     }
   }
 `
@@ -361,7 +354,12 @@ const RightMenuContainer = styled.div`
 
 const MenuToggleButton = styled.button`
   font-weight: 500;
-  padding: 0px 10px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  &:hover,
+  &:focus-visible {
+    background-color: rgb(126 126 126 / 16%);
+  }
   @media (min-width: 1100px) {
     /* display: none; */
   }
