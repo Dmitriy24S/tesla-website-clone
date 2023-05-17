@@ -79,7 +79,7 @@ export default ProductHero
 const Container = styled.section<{ bgImage: string }>`
   position: relative;
   scroll-snap-align: start;
-  background-image: ${(props) => `url('./assets/images/${props.bgImage}')`};
+  background-image: ${(props) => `url('/images/${props.bgImage}')`};
   width: 100%;
   height: 100vh;
   background-position: center;
