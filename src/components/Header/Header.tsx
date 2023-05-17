@@ -154,7 +154,7 @@ const Header = () => {
     <>
       <Wrapper>
         <LogoContainer>
-          <Logo src='./assets/images/logo.svg' alt='Tesla' />
+          <Logo src='/images/logo.svg' alt='Tesla' />
         </LogoContainer>
 
         {/* Desktop Menu - Center Links  */}
