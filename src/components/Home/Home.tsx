@@ -1,9 +1,9 @@
-import { useState } from 'react'
 import productsInfo from '../../assets/productsInfo.json'
 import ProductHero from '../ProductHero/ProductHero'
 
 const Home = () => {
-  const [data, setData] = useState(productsInfo)
+  // const [data, setData] = useState(productsInfo)
+  const data = productsInfo
 
   return (
     <main>

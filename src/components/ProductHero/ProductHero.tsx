@@ -1,3 +1,4 @@
+import { InView } from 'react-intersection-observer'
 import styled from 'styled-components'
 
 interface Props {
@@ -10,21 +11,65 @@ interface Props {
 const ProductHero = ({ title, image, isCar, lastItem }: Props) => {
   return (
     <Container bgImage={image}>
-      <TopSection>
-        <ProductTitle>{title}</ProductTitle>
-      </TopSection>
-      <BottomSection>
-        <ButtonContainer>
-          {!lastItem ? (
-            <>
-              <ButtonPrimary>Order Now</ButtonPrimary>
-              <ButtonSecondary>{isCar ? 'Demo Drive' : 'More Info'}</ButtonSecondary>
-            </>
-          ) : (
-            <ButtonSecondary style={{ opacity: 1 }}>More Info</ButtonSecondary>
-          )}
-        </ButtonContainer>
-      </BottomSection>
+      {/* Top section */}
+      <InView
+        rootMargin='-200px 0px -500px'
+        onChange={(inView, entry) => {
+          const entryEl = entry.target as HTMLElement
+          console.log('Inview:', inView, 'entry', entry)
+          if (inView) {
+            // console.log(entry.target, 'set opacity 1')
+            entryEl.style.opacity = '1'
+          } else {
+            // console.log(entry.target, 'set opacity 0')
+            entryEl.style.opacity = '0'
+          }
+        }}
+      >
+        {({
+          ref,
+          // inView,
+          // entry
+        }) => (
+          <TopSection ref={ref}>
+            <ProductTitle>{title}</ProductTitle>
+          </TopSection>
+        )}
+      </InView>
+      {/* Bottom section */}
+      <InView
+        rootMargin='-600px 0px -200px'
+        onChange={(inView, entry) => {
+          const entryEl = entry.target as HTMLElement
+          console.log('Inview:', inView, 'entry', entry)
+          if (inView) {
+            // console.log(entry.target, 'set opacity 1')
+            entryEl.style.opacity = '1'
+          } else {
+            // console.log(entry.target, 'set opacity 0')
+            entryEl.style.opacity = '0'
+          }
+        }}
+      >
+        {({
+          ref,
+          // inView,
+          // entry
+        }) => (
+          <BottomSection ref={ref}>
+            <ButtonContainer>
+              {!lastItem ? (
+                <>
+                  <ButtonPrimary>Order Now</ButtonPrimary>
+                  <ButtonSecondary>{isCar ? 'Demo Drive' : 'More Info'}</ButtonSecondary>
+                </>
+              ) : (
+                <ButtonSecondary style={{ opacity: 1 }}>More Info</ButtonSecondary>
+              )}
+            </ButtonContainer>
+          </BottomSection>
+        )}
+      </InView>
     </Container>
   )
 }
@@ -41,6 +86,7 @@ const Container = styled.section<{ bgImage: string }>`
   background-size: cover;
   background-repeat: no-repeat;
   min-height: 500px;
+  scroll-snap-align: start;
 `
 
 const ProductTitle = styled.h2`
@@ -57,14 +103,19 @@ const ProductTitle = styled.h2`
 
 const ButtonContainer = styled.div`
   position: sticky;
-  top: 80%;
   height: 0px;
   overflow: visible;
   z-index: 5;
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
   gap: 2rem;
+  top: 80%;
+  /* top: 50%; */
+  /* @media (min-width: 600px) {
+    top: 80%;
+  } */
 `
 
 const ButtonBase = styled.button`
@@ -81,9 +132,14 @@ const ButtonBase = styled.button`
 
 const ButtonPrimary = styled(ButtonBase)`
   background-color: white;
-  color: dimgray;
+  color: #464545;
   font-weight: 600;
   opacity: 0.75;
+  transition: opacity 100ms ease-out;
+  &:hover,
+  &:focus-visible {
+    opacity: 0.85;
+  }
 `
 /* ${baseButtonStyle} */
 
@@ -91,16 +147,26 @@ const ButtonSecondary = styled(ButtonBase)`
   background-color: black;
   color: whitesmoke;
   opacity: 0.75;
+  transition: opacity 100ms ease-out;
+  &:hover,
+  &:focus-visible {
+    opacity: 0.7;
+  }
 `
 
 const TopSection = styled.div`
   position: relative;
   height: 50%;
   padding: 2rem;
+  transition: opacity 700ms ease-in-out;
 `
 
 const BottomSection = styled.div`
   position: relative;
   height: 50%;
-  padding: 5rem 0;
+  padding: 5rem 0 10rem;
+  transition: opacity 700ms ease-in-out;
+  @media (min-width: 600px) {
+    padding: 5rem 0;
+  }
 `
