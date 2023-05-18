@@ -264,7 +264,7 @@ const List = styled.ul`
   text-align: start;
   flex: 1;
 
-  @media (min-width: 1100px) {
+  @media (min-width: 1200px) {
     flex-direction: row;
     align-items: center;
     gap: 0;
@@ -280,8 +280,9 @@ const ListItem = styled.li`
   a {
     border-radius: 5px;
     padding: 5px 10px;
+    // padding: 5px 15px;
     width: 100%;
-    transition: background-color 120ms ease-out;
+    transition: background-color 120ms ease;
     &:hover,
     &:focus-visible {
       background-color: rgb(126 126 126 / 16%);
@@ -291,7 +292,7 @@ const ListItem = styled.li`
 
 const MenuLarge = styled.div`
   display: none;
-  @media (min-width: 1100px) {
+  @media (min-width: 1200px) {
     display: flex;
     flex-direction: row;
     align-items: center;
@@ -318,7 +319,7 @@ const MenuSidebar = styled.div`
   width: 250px;
   /* overflow-y: auto; */
   overflow-y: overlay;
-  @media (min-width: 1100px) {
+  @media (min-width: 1200px) {
     /* display: none; */
   }
   ul {
@@ -337,7 +338,7 @@ const MenuSidebar = styled.div`
     &:focus-visible {
       background-color: #ebebeb;
     }
-    @media (min-width: 1100px) {
+    @media (min-width: 1200px) {
       /* padding: 0 10px;
       &:hover,
       &:focus-visible {
@@ -356,11 +357,12 @@ const MenuToggleButton = styled.button`
   font-weight: 500;
   border-radius: 5px;
   padding: 5px 10px;
+  transition: background-color 120ms ease;
   &:hover,
   &:focus-visible {
     background-color: rgb(126 126 126 / 16%);
   }
-  @media (min-width: 1100px) {
+  @media (min-width: 1200px) {
     /* display: none; */
   }
 `
