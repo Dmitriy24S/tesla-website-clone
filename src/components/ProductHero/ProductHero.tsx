@@ -97,6 +97,7 @@ const Container = styled.section<{ bgImage: string }>`
   background-repeat: no-repeat;
   min-height: 500px;
   scroll-snap-align: start;
+  scroll-snap-stop: always;
 `
 
 const ProductTitle = styled.h2`
