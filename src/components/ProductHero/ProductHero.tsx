@@ -13,10 +13,19 @@ const ProductHero = ({ title, image, isCar, lastItem }: Props) => {
     <Container bgImage={image}>
       {/* Top section */}
       <InView
-        rootMargin='-200px 0px -500px'
+        // rootMargin='-200px 0px -500px'
+        rootMargin='-30% 0px -30%'
         onChange={(inView, entry) => {
           const entryEl = entry.target as HTMLElement
-          console.log('Inview:', inView, 'entry', entry)
+          // console.log('Inview:', inView, 'entry', entry)
+          // IntersectionObserverEntry
+          // boundingClientRect: DOMRectReadOnly {x: 0, y: 548.5, width: 842, height: 340.5, top: 548.5, …}
+          // intersectionRatio: 0
+          // intersectionRect: DOMRectReadOnly {x: 0, y: 0, width: 0, height: 0, top: 0, …}
+          // isIntersecting: false
+          // rootBounds: DOMRectReadOnly {x: 0, y: 340.5, width: 842, height: 136.199951171875, top: 340.5, …}
+          // target: <div class="sc-hjLWnZ csqtVm">
+          // time: 10023
           if (inView) {
             // console.log(entry.target, 'set opacity 1')
             entryEl.style.opacity = '1'
@@ -38,10 +47,11 @@ const ProductHero = ({ title, image, isCar, lastItem }: Props) => {
       </InView>
       {/* Bottom section */}
       <InView
-        rootMargin='-600px 0px -200px'
+        // rootMargin='-600px 0px -200px'
+        rootMargin='-50% 0px -30%'
         onChange={(inView, entry) => {
           const entryEl = entry.target as HTMLElement
-          console.log('Inview:', inView, 'entry', entry)
+          // console.log('Inview:', inView, 'entry', entry)
           if (inView) {
             // console.log(entry.target, 'set opacity 1')
             entryEl.style.opacity = '1'
@@ -96,6 +106,7 @@ const ProductTitle = styled.h2`
   right: 0;
   margin: 0 auto;
   font-size: 1.8rem;
+  text-align: center;
   height: 0px;
   overflow: visible;
   z-index: 5;
