@@ -249,6 +249,7 @@ const Wrapper = styled.header`
 
 const Logo = styled.img`
   height: 20px;
+  width: 120px;
 `
 
 const LogoContainer = styled.div`
